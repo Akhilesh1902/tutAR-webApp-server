@@ -17,6 +17,11 @@ export const onSocketConnection = (socket, mongoClient, AWS_S3) => {
     AWS_S3.uploadObject(file, `models/${name}`);
   });
 
+  socket.on('_get_model', async ({ addr }) => {
+    console.log(addr);
+    AWS_S3.getObject(addr, socket);
+  });
+
   socket.on('disconnect', () => {
     console.log('user disconnected');
   });

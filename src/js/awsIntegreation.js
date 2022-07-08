@@ -25,14 +25,18 @@ export class AwsInstance {
       if (data) console.log('upload success' + data.Location);
     });
   }
-  updateMetaData() {
-    const data = this.s3.getObject(
-      { Bucket, Key: 'metadata.json' },
-      (err, data) => {
-        if (err) console.log(err);
-        if (data) console.log(data);
+
+  getObject(Key, socket) {
+    const data = this.s3.getObject({ Bucket, Key }, (err, data) => {
+      if (err) console.log(err);
+      if (data) {
+        console.log('success');
+        // return data;
+        socket.emit('_get_model', { model: data.Body });
       }
-    );
+    });
+    // console.log(data);
+    // return data;
   }
 
   deleteObject(Key) {}

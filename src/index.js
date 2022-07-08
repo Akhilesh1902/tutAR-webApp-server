@@ -36,8 +36,13 @@ app.get('/', (req, res) => {
   res.send('oswals');
 });
 
-app.get('/postmodal', (req, res) => {
-  console.log(req);
+app.get('/modeldata', (req, res) => {
+  mongoClient.getData().then((data) => res.send(data));
+});
+
+app.get('/:class', (req, res) => {
+  const Class = req.params.class;
+  mongoClient.getFilteredData(Class).then((data) => res.send(data));
 });
 
 io.on('connection', (socket) => {

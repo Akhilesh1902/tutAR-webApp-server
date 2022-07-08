@@ -25,6 +25,10 @@ export class MongoClientConnection {
     const resArray = await result.toArray();
     return resArray;
   }
+  async getFilteredData(Class) {
+    const res = await this.collection.find({ Class }).toArray();
+    return res;
+  }
   async updateData(data) {
     const { name, thumbName, thumb, fileAddr, Subject, Class } = data;
 
