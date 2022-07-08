@@ -15,7 +15,7 @@ const mongoClient = new MongoClientConnection();
 const AWS_S3 = new AwsInstance();
 
 const PORT = process.env.PORT || 3030;
-const CLIENT_ORIGIN = '';
+const CLIENT_ORIGIN = 'https://tutar-webapp.netlify.app/';
 const DEV_CLIENT_ORIGIN = 'http://localhost:3000';
 
 const Cors = {
