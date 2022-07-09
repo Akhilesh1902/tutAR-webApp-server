@@ -15,20 +15,20 @@ const mongoClient = new MongoClientConnection();
 const AWS_S3 = new AwsInstance();
 
 const PORT = process.env.PORT || 3030;
-const CLIENT_ORIGIN = 'https://tutar-webapp.netlify.app/';
+const CLIENT_ORIGIN = 'https://tutar-webapp.netlify.app';
 const DEV_CLIENT_ORIGIN = 'http://localhost:3000';
 
-const Cors = {
+const CORS = {
   origin: [CLIENT_ORIGIN, DEV_CLIENT_ORIGIN],
   methods: ['GET', 'POST'],
 };
 
 const server = http.createServer(app, {
-  cors: Cors,
+  cors: CORS,
 });
 
 const io = new Server(server, {
-  cors: Cors,
+  cors: CORS,
   maxHttpBufferSize: 15e6,
 });
 
